@@ -17,8 +17,7 @@ public class MyController {
     }
 
     @GetMapping("/main")
-    public String main(Model model){
-        model.addAttribute("username", "홍길동");
-        return "hello";
+    public String main(){
+        return "main";
     }
 }
