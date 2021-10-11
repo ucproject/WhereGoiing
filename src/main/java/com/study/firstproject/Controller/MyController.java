@@ -15,4 +15,10 @@ public class MyController {
         model.addAttribute("username", "홍길동");
         return "greetings";
     }
+
+    @GetMapping("/main")
+    public String main(Model model){
+        model.addAttribute("username", "홍길동");
+        return "hello";
+    }
 }
