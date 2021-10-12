@@ -2,21 +2,23 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Kakao 지도 시작하기</title>
+	<title>Main</title>
 </head>
-<body>
+
+  <body>
+	{{! 지도 생성하기 }}
 	<div id="map" style="width:100%;height:500px;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92152a116f8b5b939671d5d8022227ed"></script>
 	<script>
 		var container = document.getElementById('map');
 		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 5
+			center: new kakao.maps.LatLng(35.5396224, 129.3027729),
+			level: 8
 		};
 
 		var map = new kakao.maps.Map(container, options);
 
-		var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+		var markerPosition  = new kakao.maps.LatLng(35.5390532, 129.3095548); 
 
 // 마커를 생성합니다
 var marker = new kakao.maps.Marker({
@@ -25,8 +27,7 @@ var marker = new kakao.maps.Marker({
 
 // 마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
-
-		
 	</script>
 </body>
+
 </html>

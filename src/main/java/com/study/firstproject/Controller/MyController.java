@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  * MyController
  */
+//시작페이지 로그인 -> 로그인페이지(모달 폼) -> 로그인 완료 -> 메인페이지 (1)
+//회원가입(2)
+
+
 @Controller
 public class MyController {
 
@@ -19,5 +23,15 @@ public class MyController {
     @GetMapping("/main")
     public String main(){
         return "main";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/join")
+    public String join(){
+        return "join";
     }
 }
