@@ -25,12 +25,12 @@ public class MyController {
         return "main";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login") //sign in
     public String login(){
         return "login";
     }
 
-    @GetMapping("/join")
+    @GetMapping("/join") //sing up
     public String join(){
         return "join";
     }
