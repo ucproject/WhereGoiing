@@ -17,21 +17,21 @@ public class MyController {
     @GetMapping("/")
     public String nicetoMeet(Model model){
         model.addAttribute("username", "홍길동");
-        return "greetings";
+        return "greetings.html";
     }
 
     @GetMapping("/main")
     public String main(){
-        return "main";
+        return "main.html";
     }
 
     @GetMapping("/login") //sign in
     public String login(){
-        return "login";
+        return "login.html";
     }
 
     @GetMapping("/join") //sing up
     public String join(){
-        return "join";
+        return "join.html";
     }
 }
