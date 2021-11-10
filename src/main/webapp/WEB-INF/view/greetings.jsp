@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>반갑습니다</title>
   </head>
   <body>
         <ul class="nav justify-content-end">
@@ -25,7 +25,6 @@
         </li>
         </ul>
     <hr>
-    <h1>시작 페이지</h1>
 
     <img class="mb-4" src="/img/간절곶.jpg" alt="" width="100%"height="100%">
 

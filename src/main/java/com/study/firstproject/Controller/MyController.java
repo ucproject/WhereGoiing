@@ -22,20 +22,20 @@ public class MyController {
 
     @GetMapping("/main")
     public String main(){
-        return "main.html";
+        return "main";
     }
 
     @GetMapping("/login") //sign in
     public String login(){
-        return "login.html";
+        return "login";
     }
 
     @GetMapping("/join") //sing up
     public String join(){
-        return "join.html";
+        return "join";
     }
     @GetMapping("/board") //board
     public String board(){
-        return "board.html";
+        return "board";
     }
 }
