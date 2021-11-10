@@ -5,9 +5,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>다음 지도 API</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 		  <a class="navbar-brand" href="#">Navbar</a>
 		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +38,28 @@
 			</ul>
 		  </div>
 		</div>
-	  </nav>
+	  </nav> -->
+	  <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="main">Active</a> <!--테스트용 버튼-->
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">음식점</a>  <!--로그인버튼-->
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">카페</a>   <!--회원가입버튼-->
+        </li>
+		<li class="nav-item">
+            <a class="nav-link">영화관</a>   <!--회원가입버튼-->
+        </li>
+		<li class="nav-item">
+            <a class="nav-link">병원</a>   <!--회원가입버튼-->
+        </li>
+		<li class="nav-item">
+            <a class="nav-link">전통시장</a>   <!--회원가입버튼-->
+        </li>
+
+        </ul>
 
 	<div id="map" style="width:100%;height:500px;"></div>
 
