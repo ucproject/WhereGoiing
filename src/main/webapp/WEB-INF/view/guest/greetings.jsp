@@ -13,7 +13,7 @@
     <title>반갑습니다</title>
   </head>
   <body>
-        <ul class="nav justify-content-center">
+        <ul class="nav justify-content-end">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="main">Active</a> <!--테스트용 버튼-->
         </li>
