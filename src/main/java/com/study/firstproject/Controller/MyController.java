@@ -34,8 +34,8 @@ public class MyController {
     public String join(){
         return "join";
     }
-    @GetMapping("/board") //board
-    public String board(){
-        return "board";
+    @GetMapping("/admin") //admin
+    public String admin(){
+        return "admin";
     }
 }
