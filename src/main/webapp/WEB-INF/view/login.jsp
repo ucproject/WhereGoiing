@@ -70,17 +70,17 @@ body {
   border-top-right-radius: 0;
 }
     </style>
+
+    
+  
   </head>
   <body class="text-center">
     
 <main class="form-signin">
-<img class="mb-4" src="/img/whereUlsan.png" alt="" width="100%">
-  <form action="<c:url value="j_spring_security_check" />" method="post">
-    ID : <input type="text" name="j_username" class="form-control">
-    PW : <input type="password" name="j_password" class="form-control">
-      <button class="w-100 btn btn-lg" type="submit">Sign in</button>
+  <form>
+    <img class="mb-4" src="/img/whereUlsan.png" alt="" width="100%">
 
-    <%-- <div class="form-floating">
+    <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput">
       <label for="floatingInput">ID</label>
     </div>
@@ -88,8 +88,8 @@ body {
       <input type="password" class="form-control" id="floatingPassword">
       <label for="floatingPassword">Password</label>
     </div>
-
-    <button class="w-100 btn btn-lg" type="submit">Sign in</button> --%>
+    </div>
+    <button class="w-100 btn btn-lg" type="submit">Sign in</button>
 
   </form>
 </main>

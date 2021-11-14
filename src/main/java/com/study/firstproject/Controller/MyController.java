@@ -1,11 +1,12 @@
 package com.study.firstproject.Controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * MyController
- */ 
+ */
 //시작페이지 로그인 -> 로그인페이지(모달 폼) -> 로그인 완료 -> 메인페이지 (1)
 //회원가입(2)
 
@@ -13,36 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MyController {
 
-    @RequestMapping("/")
-    public String nicetoMeet(){
-        return "guest/greetings";
+    @GetMapping("/")
+    public String nicetoMeet(Model model){
+        model.addAttribute("username", "홍길동");
+        return "greetings";
     }
 
-    @RequestMapping("/main")
+    @GetMapping("/main")
     public String main(){
-        return "user/main";
+        return "main";
     }
 
-    @RequestMapping("/login") //sign in
+    @GetMapping("/login") //sign in
     public String login(){
-        return "security/login";
+        return "login";
     }
 
-    @RequestMapping("/loginError") //sign in
-    public String loginError(){
-        return "security/loginError";
-    }
-
-    @RequestMapping("/join") //sing up
+    @GetMapping("/join") //sing up
     public String join(){
-        return "guest/join";
+        return "join";
     }
-    @RequestMapping("/board") //board
+    @GetMapping("/board") //board
     public String board(){
-        return "user/board";
-    }
-    @RequestMapping("/admin") 
-    public String admin(){
-        return "admin/admin";
+        return "board";
     }
 }
