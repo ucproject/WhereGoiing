@@ -13,10 +13,6 @@ repositories {
 }
 
 dependencies {
-<<<<<<< HEAD
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-=======
->>>>>>> parent of ad40067 (loginFirst)
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -29,15 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'com.oracle.database.jdbc:ojdbc11:21.1.0.0'
 
-<<<<<<< HEAD
 
-=======
-	implementation 'mysql:mysql-connector-java'
-
-	
-	
-
->>>>>>> parent of ad40067 (loginFirst)
 }
 
 test {
