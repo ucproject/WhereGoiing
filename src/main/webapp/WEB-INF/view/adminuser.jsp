@@ -20,7 +20,9 @@
 									<th class="cell100 column1">Account</th>
 									<th class="cell100 column2">ID</th>
 									<th class="cell100 column3">Name</th>
-									<th class="cell100 column3">Nick Name</th>	
+									<th class="cell100 column3">Nick Name</th>
+									<th class="cell100 column3">&nbsp;</th>
+									
 								</tr>
 							</thead>
 						</table>
@@ -34,48 +36,19 @@
 									<td class="cell100 column3">Input1</td>
 									<td class="cell100 column3">plz</td>
 									
+									<td><button class="w-30 btn btn-lg" type="submit">Delete</button></td>			
 								</tr>
 							</tbody>
 						</table>
 						<center>
-						<button class="w-60 btn btn-lg" type="submit">Search</button>
-						<button class="w-60 btn btn-lg" type="submit">Update</button>
-						<button class="w-60 btn btn-lg" type="submit">Delete</button>
-						</center>		
-					</div>
-				</div>
-				<div class="table100 ver1 m-b-110">
-					<div class="table100-head">
-						
-						<table>
-							<thead>
-								<tr class="row100 head">
-									<th class="cell100 column1">location</th>
-									<th class="cell100 column2">Data</th>
-									<th class="cell100 column3">Input</th>	
-								</tr>
-							</thead>
-						</table>
-					</div>
-					<div class="table100-body js-pscroll">
-						<table>
-							<tbody>
-								<tr class="row100 body">
-									<td class="cell100 column1">Example</td>
-									<td class="cell100 column2">Data1</td>
-									<td class="cell100 column3">Input1</td>
-									
-								</tr>
-							</tbody>
-						</table>
-						<center>
+							<input type="text" class="form-control" id="searchInput" >
+							<label for="searchInput">Search</label>
 							<button class="w-60 btn btn-lg" type="submit">Search</button>
-							<button class="w-60 btn btn-lg" type="submit">Add</button>
-							<button class="w-60 btn btn-lg" type="submit">Update</button>
-							<button class="w-60 btn btn-lg" type="submit">Delete</button>							
+							
 						</center>		
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
