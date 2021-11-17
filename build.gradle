@@ -19,13 +19,11 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'mysql:mysql-connector-java'
+
 	implementation 'javax.servlet:jstl';
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper';
-
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'com.oracle.database.jdbc:ojdbc11:21.1.0.0'
-
-
 }
 
 test {
