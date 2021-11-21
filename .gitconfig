@@ -5,4 +5,4 @@
 	smudge = git-lfs smudge -- %f
 [user]
 	name = ucproject
-	email = uclesson0101@gmail.com
+	email = uclesson01@gmail.com
