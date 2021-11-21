@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.firstproject.repository.MemberMapper">
+
+    <select id="getMemberList" resultType="com.study.firstproject.model.Member">
+        select * from myuser
+    </select>
+
+    <select id="getMember" resultType="com.study.firstproject.model.Member">
+        select * from myuser where id = #{id}
+    </select>
+
+    <insert id="createMember">
+        insert into myuser(name, id) values(#{name}, #{id})
+    </insert>
+
+    <delete id="deleteMember">
+        delete from myuser
+        where id = #{id}
+    </delete>
+
+    <update id="updateMember">
+        update myuser set name = #{name}
+        where id = #{id}
+    </update>
+
+</mapper>

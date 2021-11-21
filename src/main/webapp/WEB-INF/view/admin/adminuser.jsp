@@ -30,14 +30,14 @@
 					<div class="table100-body js-pscroll">
 						<table>
 							<tbody>
+								<c:forEach items="${users}" var="dto">
 								<tr class="row100 body">
-									<td class="cell100 column1">Here</td>
-									<td class="cell100 column2">Data1</td>
-									<td class="cell100 column3">Input1</td>
-									<td class="cell100 column3">plz</td>
-									
+									<td>${dto.id}</td>
+									<td>${dto.name}</td>
+																
 									<td><button class="w-30 btn btn-lg" type="submit">Delete</button></td>			
 								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 						<center>

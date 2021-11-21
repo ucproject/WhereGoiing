@@ -1,8 +1,13 @@
 package com.study.firstproject.Controller;
 
+import com.study.firstproject.repository.MemberMapper;
+import com.study.firstproject.service.MemberService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * MyController
@@ -14,9 +19,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyController {
 
+    @Autowired
+    MemberService memberService;
+
     @GetMapping("/")
-    public String nicetoMeet(Model model){
-        model.addAttribute("username", "홍길동");
+    public String nicetoMeet(){
         return "greetings";
     }
 
@@ -34,9 +41,16 @@ public class MyController {
     public String join(){
         return "join";
     }
-    @GetMapping("/adminuser") //admin
-    public String adminuser(){
-        return "adminuser";
+    @RequestMapping("/adminuser") //admin
+    public String adminuser(Model model){
+        model.addAttribute("users", memberService.getMemberList());
+        return "admin/adminuser";
+    }
+
+    @RequestMapping("/list") //admin
+    public String listpage(Model model){
+        model.addAttribute("list", memberService.getMemberList());
+        return "list";
     }
     
 }
