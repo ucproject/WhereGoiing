@@ -1,5 +1,8 @@
 package com.study.firstproject.Controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.study.firstproject.model.Member;
 import com.study.firstproject.repository.MemberMapper;
 import com.study.firstproject.service.MemberService;
 
@@ -37,10 +40,16 @@ public class MyController {
         return "login";
     }
 
-    @GetMapping("/join") //sing up
+    @RequestMapping("/join") //sign up
     public String join(){
         return "join";
     }
+    @RequestMapping("/createMember") //sign up
+    public String createMember(Member member){
+        memberService.createMember(member);
+        return "redirect:/";
+    }
+
     @RequestMapping("/adminuser") //admin
     public String adminuser(Model model){
         model.addAttribute("users", memberService.getMemberList());

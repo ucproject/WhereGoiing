@@ -16,6 +16,7 @@ public class MemberService {
     @Autowired
     MemberMapper memberMapper;
 
+    
     // public MemberService(MemberMapper memberMapper) {
     //     this.memberMapper = memberMapper;
     // }

@@ -14,7 +14,7 @@
     </select>
 
     <insert id="createMember">
-        insert into myuser(name, id) values(#{name}, #{id})
+        insert into myuser(id, password, name, nickname, email) values(#{id}, #{password}, #{name}, #{nickname}, #{email})
     </insert>
 
     <delete id="deleteMember">
@@ -26,5 +26,6 @@
         update myuser set name = #{name}
         where id = #{id}
     </update>
+    
 
 </mapper>
