@@ -16,11 +16,6 @@ public class MemberService {
     @Autowired
     MemberMapper memberMapper;
 
-    
-    // public MemberService(MemberMapper memberMapper) {
-    //     this.memberMapper = memberMapper;
-    // }
-
     public List<Member> getMemberList() {
         return memberMapper.getMemberList();
     }
@@ -40,5 +35,10 @@ public class MemberService {
     public int deleteMember(int id) {
         return memberMapper.deleteMember(id);
     }
+
+    public Member getSelectOne(Member member) {
+		return memberMapper.selectMemberOne(member);
+	}
+
     
 }

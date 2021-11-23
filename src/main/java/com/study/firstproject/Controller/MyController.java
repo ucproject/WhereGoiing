@@ -1,9 +1,8 @@
 package com.study.firstproject.Controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.study.firstproject.model.Member;
-import com.study.firstproject.repository.MemberMapper;
+
+import com.study.firstproject.service.MapService;
 import com.study.firstproject.service.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MyController {
 
     @Autowired
+    MapService mapService;
+
+    @Autowired
     MemberService memberService;
 
     @GetMapping("/")
@@ -30,15 +32,54 @@ public class MyController {
         return "greetings";
     }
 
-    @GetMapping("/main")
+    @RequestMapping("/main")
     public String main(){
+        //model.addAttribute("maps", mapService.gethospitalMapList());
         return "main";
     }
 
-    @GetMapping("/login") //sign in
-    public String login(){
-        return "login";
+    @RequestMapping("/cineme")
+    public String cinemamain(){
+        //model.addAttribute("cinememaps", mapService.getcinemeMapList());
+        return "map/cinemeMap";
     }
+
+    @RequestMapping("/hospital")
+    public String hospital(){
+        //model.addAttribute("hospitalmaps", mapService.gethospitalMapList());
+        return "map/hospitalMap";
+    }
+
+    @RequestMapping("/market")
+    public String market(){
+        //model.addAttribute("marketmaps", mapService.getmarketMapList());
+        return "map/marketMap";
+    }
+
+    @RequestMapping("/mart")
+    public String mart(){
+        //model.addAttribute("martmaps", mapService.getmartMapList());
+        return "map/martMap";
+    }
+
+    @RequestMapping("/park")
+    public String park(){
+        //model.addAttribute("parkmaps", mapService.getparkMapList());
+        return "map/parkMap";
+    }
+
+    @RequestMapping("/restaurant")
+    public String restaurant(){
+        //model.addAttribute("restaurantmaps", mapService.getrestaurantMapList());
+        return "map/restaurantMap";
+    }
+
+    // @RequestMapping("/login") //sign in
+    // public String login(Model model){
+    //     model.addAttribute("title", "로그인");
+        
+    //     return "login";
+    // }
 
     @RequestMapping("/join") //sign up
     public String join(){

@@ -19,26 +19,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-    <c:forEach id=>
     <ul class="nav justify-content-center">     
         <li class="nav-item">
-            <a class="nav-link" href="join">음식점</a>  
-        <li class="nav-item">
-            <a class="nav-link" href="login">영화관</a>  
+            <a class="nav-link" href="restaurant">음식점</a>  
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="join">병원</a>   
+            <a class="nav-link" href="cineme">영화관</a>  
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="join">대형마트</a>   
-        <li class="nav-item">
-            <a class="nav-link" href="join">시장</a>   
+            <a class="nav-link" href="hospital">병원</a>   
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="join">도시 공원</a>   
+            <a class="nav-link" href="mart">대형마트</a>   
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="market">시장</a>   
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="park">도시 공원</a>   
+        </li>
+        <li class="nav-justify-content-end">
+            <a class="nav-link" href="logout">로그아웃</a>     
         </li>
         </ul>
-    </c:forEach>
+       
+            
+     
     <hr>
 <div id="map"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92152a116f8b5b939671d5d8022227ed&libraries=services"></script>
@@ -74,10 +80,9 @@ if (navigator.geolocation) {
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-
 var positions = [
     {
-        title: '', 
+        title: '울산시청', 
         latlng: new kakao.maps.LatLng(35.53939658436391, 129.31123399881406)
     },
     {
@@ -89,12 +94,10 @@ var positions = [
         latlng: new kakao.maps.LatLng(35.53852962614413, 129.33827638413592)
     }
 ];
-
-
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
     
-for (var i = 0; i < positions.length; i++) {
+for (var i = 0; i < positions.length; i ++) {
     
     // 마커 이미지의 이미지 크기 입니다
     var imageSize = new kakao.maps.Size(24, 35); 

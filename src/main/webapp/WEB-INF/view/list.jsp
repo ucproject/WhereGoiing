@@ -8,22 +8,7 @@
   
   </head>
   <body >
-    <table width="500" cellpadding="0" cellspacing="0" border="1">
-        <tr>
-            <td>번호</td>
-            <td>작성자</td>
-            <td>제목</td>
-            <td>삭제</td>
-        </tr>
-        <c:forEach items="${list}" var="dto">
-            <tr>
-                <td>${dto.id}</td>
-                <td>${dto.name}</td>
-                <td>ff</td>
-                <td>삭제</td>
-            </tr>
-        </c:forEach>
-    </table>
+    <h1>로그인 됨</h1>
 
   </body>
 </html>

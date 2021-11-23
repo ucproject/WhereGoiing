@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.firstproject.repository.MapMapper">
+
+    <select id="getcinemaMapList" resultType="com.study.firstproject.model.Map">
+        select * from ulsan_cinema
+    </select>
+
+    <select id="gethospitalMapList" resultType="com.study.firstproject.model.Map">
+        select * from ulsan_hospital
+    </select>
+
+    <select id="getmarketMapList" resultType="com.study.firstproject.model.Map">
+        select * from ulsan_market
+    </select>
+
+    <select id="getmartMapList" resultType="com.study.firstproject.model.Map">
+        select * from ulsan_mart
+    </select>
+
+    <select id="getparkMapList" resultType="com.study.firstproject.model.Map">
+        select * from ulsan_park
+    </select>
+
+    <select id="getrestaurantMapList" resultType="com.study.firstproject.model.Map">
+        select * from ulsan_restaurant
+    </select>
+</mapper>

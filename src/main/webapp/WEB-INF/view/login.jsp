@@ -18,7 +18,7 @@
       <tr>
         <td>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput">
+      <input type="text" class="form-control" id="userid">
       <label for="floatingInput">ID</label>
     </div>
         </td>
@@ -26,7 +26,7 @@
       <tr>
         <td>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword">
+      <input type="password" class="form-control" id="userpw">
       <label for="floatingPassword">Password</label>
     </div>
     </div>
@@ -34,7 +34,7 @@
   </tr>
   <tr>
     <td>
-    <button class="w-100 btn btn-lg" type="submit">Sign in</button>
+    <button class="w-100 btn btn-lg" type="submit" onclick="go_login">Sign in</button>
   </td>
   </tr>
   </table>

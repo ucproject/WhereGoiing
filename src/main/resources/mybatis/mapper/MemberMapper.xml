@@ -18,14 +18,21 @@
     </insert>
 
     <delete id="deleteMember">
-        delete from myuser
-        where id = #{id}
+        delete from myuser where id = #{id}
     </delete>
 
     <update id="updateMember">
-        update myuser set name = #{name}
-        where id = #{id}
+        update myuser set name = #{name} where id = #{id}
     </update>
-    
+
+    <select id="selectMemberOne" parameterType="com.study.firstproject.model.Member" resultType="com.study.firstproject.model.Member">
+		SELECT 
+			id, 
+			password
+		FROM myuser
+		WHERE id=#{id}
+		AND password=#{password}
+	</select>
+
 
 </mapper>
