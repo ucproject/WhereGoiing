@@ -19,7 +19,7 @@
         <tr>
           <td>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" name="id" >
+      <input type="text" class="form-control" id="floatingInput" name="id" required>
       <label for="floatingInput">ID</label>
     </div>
   </td>
@@ -27,7 +27,7 @@
     <tr>
       <td>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingInput" name="password">
+      <input type="password" class="form-control" id="floatingInput" name="password" required>
       <label for="floatingInput">Password</label>
     </div>
   </td>
@@ -35,7 +35,7 @@
 <tr>
   <td>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" name="name">
+      <input type="text" class="form-control" id="floatingInput" name="name" required>
       <label for="floatingInput">Name</label>
     </div>
   </td>
@@ -43,7 +43,7 @@
 <tr>
   <td>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" name="nickname">
+      <input type="text" class="form-control" id="floatingInput" name="nickname" required>
       <label for="floatingInput">Nick name</label>
     </div>
   </td>
@@ -51,7 +51,7 @@
 <tr>
   <td>
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" name="email">
+      <input type="email" class="form-control" id="floatingInput" name="email" required>
       <label for="floatingInput">Email address</label>
     </div>    
   </td>

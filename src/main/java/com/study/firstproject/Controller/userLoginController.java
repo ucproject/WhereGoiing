@@ -25,6 +25,7 @@ public class userLoginController {
         Member loginMember = memberServic.getSelectOne(member);
 		if(loginMember == null) {
 			// login 실패!
+			
 			return "redirect:/userlogin";
 		}
 		session.setAttribute("loginMember", loginMember);

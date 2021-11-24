@@ -25,6 +25,7 @@ public class MemberService {
     }
 
     public int createMember(Member member) {
+        
         return memberMapper.createMember(member);
     }
 
@@ -39,6 +40,8 @@ public class MemberService {
     public Member getSelectOne(Member member) {
 		return memberMapper.selectMemberOne(member);
 	}
+
+
 
     
 }

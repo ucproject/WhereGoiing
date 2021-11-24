@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<body>
+
 <html lang="en">
+    <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,9 +16,7 @@
 
 <meta name="theme-color" content="#fff200">
 <link rel="stylesheet" href="/src/main/resources/static/css/loginform.css/">
-</body>
-</html>
 
-
+</head>
 
 
