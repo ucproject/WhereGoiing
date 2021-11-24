@@ -1,7 +1,7 @@
 package com.study.firstproject.Controller;
 
 import com.study.firstproject.model.Member;
-
+import com.study.firstproject.model.common.ResultMsg;
 import com.study.firstproject.service.MapService;
 import com.study.firstproject.service.MemberService;
 
@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * MyController
@@ -36,6 +37,7 @@ public class MyController {
     @RequestMapping("/main")
     public String main(){
         //model.addAttribute("maps", mapService.gethospitalMapList());
+        
         return "main";
     }
 
@@ -87,9 +89,16 @@ public class MyController {
         return "join";
     }
     @PostMapping("/createMember") //sign up
-    public String createMember(Member member){
-        memberService.createMember(member);
-        return "redirect:join";
+    public @ResponseBody ResultMsg<String> createMember(Member member){
+        ResultMsg<String> rslt = null;
+        try{
+            memberService.createMember(member);
+            rslt = new ResultMsg<>(true, "Success");
+        }catch(Exception e){
+            rslt = new ResultMsg<>(false, e.getMessage());
+        }
+        
+        return rslt;
     }
 
     @RequestMapping("/adminuser") //admin
