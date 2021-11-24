@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Sign-up</title>
-    <jsp:include page="top.jsp" flush="false"/>
 
-    
-  </head>
+    <jsp:include page="top.jsp" flush="false"/>
   <body class="text-center">
     
 <main class="form-signin">
-  <form action="/createMember" method="post">
+  <form action="/createMember" method="post" name="joinForm" id="joinForm">
     <img class="mb-4" src="/img/whereUlsan.png" alt="" width="100%">
     <div>
       <center>
@@ -66,8 +60,26 @@
 </div>
   </form>
 </main>
-
-
-    
   </body>
+  <script>
+    $(function(){
+      $('#joinForm').on('submit', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        $.ajax({
+          type:'POST',
+          url:'/createMember',
+          data:$(this).serialize()
+        }).done(function(rslt){
+            if(rslt.code == "success"){
+              location.href = '/';
+            }else{
+              alert(rslt.msg);
+            }
+        }).fail(function(err){
+            alert("has a problems with communitcation");
+        })
+      });
+    });
+  </script>
 </html>
