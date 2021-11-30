@@ -22,8 +22,6 @@
 									<th class="cell100 column3">ID</th>									
 									<th class="cell100 column3">Password</th>
 									<th class="cell100 column3">&nbsp;</th>
-								
-									
 								</tr>
 							</thead>
 						</table>
@@ -34,10 +32,9 @@
 								<c:forEach items="${users}" var="dto">
 								<tr class="row100 body">
 									<td class="cell100 column1">${dto.number}</td>
-									<td class="cell100 column2"><a href="\">${dto.name}</a></td>
+									<td class="cell100 column2">${dto.name}</td>
 									<td class="cell100 column3">${dto.id}</td>
-									<td class="cell100 column3">${dto.password}</td>
-																	
+									<td class="cell100 column3">${dto.password}</td>						
 									<td><button class="w-30 btn btn-lg" type="submit">Delete</button></td>			
 								</tr>
 							</c:forEach>

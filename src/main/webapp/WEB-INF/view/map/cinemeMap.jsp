@@ -1,66 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
+<html lang="en">
+    <jsp:include page="maptop.jsp" flush="true"/>
     <title>메인 페이지</title>
-    <style>
-        html,
-        body{
-            width: 100%;
-            height : 100%;
-        }
-        #map{
-            width : 100%;
-            height: 100%;
-        }
-    </style> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
+    
 <body>
     <ul class="nav justify-content-center">     
-        <li class="nav-item">
-            <a class="nav-link" href="restaurant">음식점</a>
-        </li>  
-        <li class="nav-item">
-            <a class="nav-link" href="cineme">영화관</a>  
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="hospital">병원</a>   
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="mart">대형마트</a>   
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="market">시장</a>   
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="park">도시 공원</a>   
-        </li>
-    </ul>
-    <ul class="nav-justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link" href="logout">로그아웃</a>     
-        </li>
-    </ul>
-    <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="restaurant">음식점</a>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="cineme">영화관</a>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="hospital">병원</a>   
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="mart">대형마트</a>   
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="market">시장</a>   
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="park">도시 공원</a>   
+            </li>
+            <li class="nav-justify-content-end">
+                <a class="nav-link" href="logout">로그아웃</a>     
+            </li>
+        </ul>  <hr>
 <div id="map"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92152a116f8b5b939671d5d8022227ed&libraries=services"></script>
 <script>
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+//var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(33.450705, 126.570677), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
-    };  
+    };
+
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+//교통상황 오버레이
+map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC); 
+//마커 배열
+var markers = [];
 //현재 위치로 지도 옮기기
 if (navigator.geolocation) {
-    
     navigator.geolocation.getCurrentPosition(function(position) {
         
         var lat = position.coords.latitude, // 위도
@@ -77,37 +65,38 @@ if (navigator.geolocation) {
         
     displayMarker(locPosition, message);
 }
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-var positions = new Array();
 
-// <c:forEach var="maps" items="${maps}">
-//     positions.push({
-//         title : "${maps.name}",
-//         latlng:("${maps.latitude}","${maps.longitude}")
-//         });
-// </c:forEach>
-
-[
-    {
-        title: '<c:out value="$', 
-        latlng: new kakao.maps.LatLng(35.53939658436391, 129.31123399881406)
-    },
-    {
-        title: '울산과학대학교 동부캠퍼스', 
-        latlng: new kakao.maps.LatLng(35.495911569719375, 129.4156068822835)
-    },
-    {
-        title: '현대백화점', 
-        latlng: new kakao.maps.LatLng(35.53852962614413, 129.33827638413592)
-    }
-];
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
     
-for (var i = 0; i < positions.length; i ++) {
-    
-    // 마커 이미지의 이미지 크기 입니다
+var positions = [];
+$.ajax({
+    type : "POST",
+    url : "map/cinemeMap",
+    data:{
+        name:"${ulsan_cinema.name}",
+        lat:"${ulsan_cinema.latitude}",
+        lon:"${ulsan_cinema.longitude}",
+        address:"${ulsan_cinema.address}",
+        division:"${ulsan_cinema.division}"
+    },
+    error : function(error){
+        console.log("error");
+    },
+    success : function(positions){
+        console.log(positions);
+        alert(JSON.stringify(positions));
+        console.log(positions[0].name,positions.lat);
+        console.log("success");
+
+        for(var i=0; i<positions.length; i++){
+
+            positions.push({
+                title : positions[i].name, //마커에 타이틀 표시
+                latlng : new kakao.maps.LatLng(positions[i].lat, positions[i].lon)
+            });
+            // 마커 이미지의 이미지 크기 입니다
     var imageSize = new kakao.maps.Size(24, 35); 
     
     // 마커 이미지를 생성합니다    
@@ -120,7 +109,17 @@ for (var i = 0; i < positions.length; i ++) {
         title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image : markerImage // 마커 이미지 
     });
-}
+
+            // marker.setMap(map);
+
+            // bounds.extends(positions[i]);
+        }
+    },async : false
+});
+// for (var i = 0; i < positions.length; i ++) {
+    
+    
+// }
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition, message) {
 
@@ -143,8 +142,20 @@ function displayMarker(locPosition, message) {
     infowindow.open(map, marker);
     
     // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);      
-}    
+    map.setCenter(locPosition);     
+    
+   
+
+
+// var bounds = new kakao.maps.LatLngBounds();
+
+// var i, marker;
+
+// marker = new kakao.maps.Marker({
+//     position : positions[i].latlng,
+//     title : positions[i].title
+// })
+ }    
 </script>
 </body>
 </html>

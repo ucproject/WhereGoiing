@@ -6,7 +6,7 @@
   <body class="text-center">
     
 <main class="form-signin">
-  <form>
+  <form method="post" action="/userlogin">
     <img class="mb-4" src="/img/whereUlsan.png" alt="" width="100%">
     <center>
       <div style="padding-top: 150px;">
@@ -14,7 +14,7 @@
       <tr>
         <td>
     <div class="form-floating">
-      <input type="text" class="form-control" id="userid">
+      <input type="text" class="form-control" name="id">
       <label for="floatingInput">ID</label>
     </div>
         </td>
@@ -22,7 +22,7 @@
       <tr>
         <td>
     <div class="form-floating">
-      <input type="password" class="form-control" id="userpw">
+      <input type="password" class="form-control" name="password">
       <label for="floatingPassword">Password</label>
     </div>
     </div>

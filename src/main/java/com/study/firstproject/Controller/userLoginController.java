@@ -17,7 +17,7 @@ public class userLoginController {
 	
 	@GetMapping("/userlogin")
 	public String userlogin() {
-		return "userlogin";
+		return "login";
 	}
 	
 	@PostMapping("/userlogin")
@@ -25,8 +25,7 @@ public class userLoginController {
         Member loginMember = memberServic.getSelectOne(member);
 		if(loginMember == null) {
 			// login 실패!
-			
-			return "redirect:/userlogin";
+			return "redirect:/login";
 		}
 		session.setAttribute("loginMember", loginMember);
 		    return "map/hospitalMap";
