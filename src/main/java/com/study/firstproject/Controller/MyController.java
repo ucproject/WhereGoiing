@@ -48,8 +48,8 @@ public class MyController {
     }
 
     @RequestMapping("/hospital")
-    public String hospital(){
-        //model.addAttribute("hospitalmaps", mapService.gethospitalMapList());
+    public String hospital(Model model){
+       // model.addAttribute("hospitalmaps", mapService.gethospitalMapList());
         return "map/hospitalMap";
     }
 
@@ -77,17 +77,12 @@ public class MyController {
         return "map/restaurantMap";
     }
 
-    // @RequestMapping("/login") //sign in
-    // public String login(Model model){
-    //     model.addAttribute("title", "로그인");
-        
-    //     return "login";
-    // }
 
     @RequestMapping("/join") //sign up
     public String join(){
         return "join";
     }
+    
     @PostMapping("/createMember") //sign up
     public @ResponseBody ResultMsg<String> createMember(Member member){
         ResultMsg<String> rslt = null;
