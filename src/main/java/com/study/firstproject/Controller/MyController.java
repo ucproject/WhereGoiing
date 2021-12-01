@@ -1,5 +1,6 @@
 package com.study.firstproject.Controller;
 
+
 import com.study.firstproject.model.Member;
 import com.study.firstproject.model.common.ResultMsg;
 import com.study.firstproject.service.MapService;
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MyController {
 
+  
+
     @Autowired
     MapService mapService;
 
@@ -33,29 +36,30 @@ public class MyController {
     public String nicetoMeet(){
         return "greetings";
     }
-
     @RequestMapping("/main")
     public String main(){
         //model.addAttribute("maps", mapService.gethospitalMapList());
-        
         return "main";
     }
-
     @RequestMapping("/cineme")
     public String cinemamain(){
         //model.addAttribute("cinememaps", mapService.getcinemeMapList());
         return "map/cinemeMap";
     }
+   
 
     @RequestMapping("/hospital")
     public String hospital(Model model){
-       // model.addAttribute("hospitalmaps", mapService.gethospitalMapList());
+        //model.addAttribute("hospitalmaps", mapService.gethospitalMapList());
         return "map/hospitalMap";
     }
 
+
+  
+
     @RequestMapping("/market")
     public String market(){
-        //model.addAttribute("marketmaps", mapService.getmarketMapList());
+        //map.addAttribute("marketmaps", mapService.getmarketMapList());
         return "map/marketMap";
     }
 
@@ -92,7 +96,6 @@ public class MyController {
         }catch(Exception e){
             rslt = new ResultMsg<>(false, e.getMessage());
         }
-        
         return rslt;
     }
 

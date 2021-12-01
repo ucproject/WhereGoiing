@@ -67,13 +67,9 @@ if (navigator.geolocation) {
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// 마커 이미지의 이미지 주소입니다
-var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-    
-var positions = [];
 $.ajax({
-    type : "POST",
-    url : "map/hospitalMap",
+    type : "GET",
+    url : "/hospital",
     data:{
         name:"${ulsan_hospital.name}",
         lat:"${ulsan_hospital.latitude}",
@@ -87,21 +83,25 @@ $.ajax({
     success : function(positions){
         console.log(positions);
         alert(JSON.stringify(positions));
-        console.log(positions[0].name,positions.lat);
+        console.log(positions[0].name,positions[0].lat);
         console.log("success");
-
+        var positions = [];
         for(var i=0; i<positions.length; i++){
-
             positions.push({
                 title : positions[i].name, //마커에 타이틀 표시
                 latlng : new kakao.maps.LatLng(positions[i].lat, positions[i].lon)
             });
+        }
             // 마커 이미지의 이미지 크기 입니다
+    var markers = [];
+    for(var i=0; i<positions.length; i++){
+    
+    
+        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
     var imageSize = new kakao.maps.Size(24, 35); 
     
     // 마커 이미지를 생성합니다    
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-    
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
@@ -109,17 +109,14 @@ $.ajax({
         title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image : markerImage // 마커 이미지 
     });
-
-            // marker.setMap(map);
-
-            // bounds.extends(positions[i]);
-        }
+            marker.setMap(map);
+			    
+			    // LatLngBounds 객체에 좌표를 추가합니다
+			 bounds.extend(positions[i]);
+             markers.push(marker);
+    }
     },async : false
 });
-// for (var i = 0; i < positions.length; i ++) {
-    
-    
-// }
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition, message) {
 
@@ -143,19 +140,7 @@ function displayMarker(locPosition, message) {
     
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);     
-    
-   
-
-
-// var bounds = new kakao.maps.LatLngBounds();
-
-// var i, marker;
-
-// marker = new kakao.maps.Marker({
-//     position : positions[i].latlng,
-//     title : positions[i].title
-// })
- }    
+ }  
 </script>
 </body>
 </html>
