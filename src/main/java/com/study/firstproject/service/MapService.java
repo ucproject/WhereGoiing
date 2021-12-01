@@ -13,8 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MapService {
 
     @Autowired
-    static
-    MapMapper mapMapper;
+    static MapMapper mapMapper;
 
     public static List<Map> getcinemaMapList() {
         return mapMapper.getcinemaMapList();
@@ -39,4 +38,6 @@ public class MapService {
     public List<Map> getrestaurantMapList() {
         return mapMapper.getrestaurantMapList();
     }
+
+  
 }

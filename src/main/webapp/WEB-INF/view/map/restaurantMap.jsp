@@ -72,7 +72,7 @@ var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerS
     
 var positions = [];
 $.ajax({
-    type : "POST",
+    type : "GET",
     url : "map/restaurantMap",
     data:{
         name:"${ulsan_restaurant.name}",

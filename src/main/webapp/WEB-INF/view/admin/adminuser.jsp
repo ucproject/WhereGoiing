@@ -41,9 +41,9 @@
 							</tbody>
 						</table>
 						<center>
-							<input type="text" class="form-control" id="searchInput" >
+							<!-- <input type="text" class="form-control" id="searchInput" > -->
 							
-							<button class="w-60 btn btn-lg" type="submit">Search</button>
+							<!-- <button class="w-60 btn btn-lg" type="submit">Search</button> -->
 							
 						</center>		
 					</div>

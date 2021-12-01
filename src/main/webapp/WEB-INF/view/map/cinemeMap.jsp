@@ -72,8 +72,8 @@ var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerS
     
 var positions = [];
 $.ajax({
-    type : "POST",
-    url : "map/cinemeMap",
+    type : "GET",
+    url : "getcinemaMapList",
     data:{
         name:"${ulsan_cinema.name}",
         lat:"${ulsan_cinema.latitude}",
