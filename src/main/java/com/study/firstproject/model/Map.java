@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Map {
+    String category;
     String name;
     String address;
     double latitude;

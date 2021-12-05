@@ -15,29 +15,13 @@ public class MapService {
     @Autowired
     static MapMapper mapMapper;
 
-    public static List<Map> getcinemaMapList() {
-        return mapMapper.getcinemaMapList();
+    public static List<Map> getLocationList() {
+        return mapMapper.getLocationList();
     }
 
-    public List<Map> gethospitalMapList() {
-        return mapMapper.gethospitalMapList();
-    }
+    
 
-    public List<Map> getmarketMapList() {
-        return mapMapper.getmarketMapList();
-    }
-
-    public List<Map> getmartMapList() {
-        return mapMapper.getmartMapList();
-    }
-
-    public List<Map> getparkMapList() {
-        return mapMapper.getparkMapList();
-    }
-
-    public List<Map> getrestaurantMapList() {
-        return mapMapper.getrestaurantMapList();
-    }
+   
 
   
 }

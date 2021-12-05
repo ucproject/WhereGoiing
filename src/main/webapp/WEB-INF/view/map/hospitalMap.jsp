@@ -5,7 +5,8 @@
     <jsp:include page="maptop.jsp" flush="true"/>
     <title>메인 페이지</title>
     
-<body>
+<body> 
+    <form>
     <ul class="nav justify-content-center">     
             <li class="nav-item">
                 <a class="nav-link" href="restaurant">음식점</a>  
@@ -28,7 +29,9 @@
             <li class="nav-justify-content-end">
                 <a class="nav-link" href="logout">로그아웃</a>     
             </li>
-        </ul>  <hr>
+        </ul>
+    </form>
+    <hr>
 <div id="map"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92152a116f8b5b939671d5d8022227ed&libraries=services"></script>
 <script>
@@ -43,8 +46,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-//교통상황 오버레이
-map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC); 
+// //교통상황 오버레이
+// map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC); 
 //마커 배열
 var markers = [];
 //현재 위치로 지도 옮기기
@@ -67,56 +70,76 @@ if (navigator.geolocation) {
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
-$.ajax({
-    type : "GET",
-    url : "/hospital",
-    data:{
-        name:"${ulsan_hospital.name}",
-        lat:"${ulsan_hospital.latitude}",
-        lon:"${ulsan_hospital.longitude}",
-        address:"${ulsan_hospital.address}",
-        division:"${ulsan_hospital.division}"
-    },
-    error : function(error){
-        console.log("error");
-    },
-    success : function(positions){
-        console.log(positions);
-        alert(JSON.stringify(positions));
-        console.log(positions[0].name,positions[0].lat);
-        console.log("success");
-        var positions = [];
-        for(var i=0; i<positions.length; i++){
-            positions.push({
-                title : positions[i].name, //마커에 타이틀 표시
-                latlng : new kakao.maps.LatLng(positions[i].lat, positions[i].lon)
-            });
-        }
-            // 마커 이미지의 이미지 크기 입니다
-    var markers = [];
-    for(var i=0; i<positions.length; i++){
+kakao.maps.event.addListener(map, 'bounds_changed', function() {             
     
+    // 지도 영역정보를 얻어옵니다 
+    var bounds = map.getBounds();
     
-        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-    var imageSize = new kakao.maps.Size(24, 35); 
+    // 영역정보의 남서쪽 정보를 얻어옵니다 
+    var sw = bounds.getSouthWest();
     
-    // 마커 이미지를 생성합니다    
-    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: positions[i].latlng, // 마커를 표시할 위치
-        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-        image : markerImage // 마커 이미지 
-    });
-            marker.setMap(map);
-			    
-			    // LatLngBounds 객체에 좌표를 추가합니다
-			 bounds.extend(positions[i]);
-             markers.push(marker);
-    }
-    },async : false
+    // 영역정보의 북동쪽 정보를 얻어옵니다 
+    var ne = bounds.getNorthEast();
+    
+    var message = '<p>영역좌표는 남서쪽 위도, 경도는  ' + sw.toString() + '이고 <br>';  
+    message += '북동쪽 위도, 경도는  ' + ne.toString() + '입니다 </p>'; 
+    
+    console.log(message);
 });
+
+
+let getLocation = (cate, sw, ne)=>{
+    $.ajax({
+        type : "GET",
+        url : "/hospital",
+        data:{
+            cate: cate,
+            sw: sw,
+            ne: ne,
+        },
+        dataType: 'json',
+        error : function(error){
+            console.log("error");
+        },
+        success : function(data){
+            console.log(data);
+            alert(JSON.stringify(data));
+            console.log("success");
+
+            var positions = [];
+            for(var i=0; i<positions.length; i++){
+                positions.push({
+                    title : positions[i].name, //마커에 타이틀 표시
+                    latlng : new kakao.maps.LatLng(positions[i].lat, positions[i].lon)
+                });
+            }
+                // 마커 이미지의 이미지 크기 입니다
+        var markers = [];
+        for(var i=0; i<positions.length; i++){
+        
+        
+            var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+        var imageSize = new kakao.maps.Size(24, 35); 
+        
+        // 마커 이미지를 생성합니다    
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image : markerImage // 마커 이미지 
+        });
+                marker.setMap(map);
+                    
+                    // LatLngBounds 객체에 좌표를 추가합니다
+                bounds.extend(positions[i]);
+                markers.push(marker);
+        }
+        },async : false
+    });
+};
+
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition, message) {
 

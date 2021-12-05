@@ -8,7 +8,7 @@
 <body>
     <ul class="nav justify-content-center">     
             <li class="nav-item">
-                <a class="nav-link" href="restaurant">음식점</a>  
+                <a class="nav-link" href=" ">음식점</a>  
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="cineme">영화관</a>  
