@@ -6,6 +6,29 @@
 <mapper namespace="com.study.firstproject.repository.MapMapper">
 
     <select id="getLocationList" resultType="com.study.firstproject.model.Map">
-        select * from UlsanInfo where category = #{category}
+        select * from UlsanInfo;
     </select>
+
+    <select id="getParkList" resultType="com.study.firstproject.model.Map">
+        select * from UlsanInfo where category = "공원";
+    </select>
+
+    <select id="getToiletList" resultType="com.study.firstproject.model.Map">
+        select * from UlsanInfo where category = "화장실";
+    </select>
+
+    <select id="getMarketList" resultType="com.study.firstproject.model.Map">
+        select * from UlsanInfo where category = "시장";
+    </select>
+
+    <select id="getMartList" resultType="com.study.firstproject.model.Map">
+        select * from UlsanInfo where category = "대형마트";
+    </select>
+
+    <select id="getHospitalList" resultType="com.study.firstproject.model.Map">
+        select * from UlsanInfo where category = "병원";
+    </select>
+
+
+
 </mapper>

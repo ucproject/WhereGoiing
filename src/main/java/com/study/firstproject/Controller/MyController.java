@@ -1,6 +1,9 @@
 package com.study.firstproject.Controller;
 
 
+import java.util.List;
+
+import com.study.firstproject.model.Map;
 import com.study.firstproject.model.Member;
 import com.study.firstproject.model.common.ResultMsg;
 import com.study.firstproject.service.MapService;
@@ -39,6 +42,12 @@ public class MyController {
         //model.addAttribute("maps", mapService.gethospitalMapList());
         return "main";
     }
+
+    @RequestMapping("/map")
+    public String map(){
+        //model.addAttribute("parkmaps", mapService.getparkMapList());
+        return "map/map";
+    }
     @RequestMapping("/cineme")
     public String cinemamain(){
         //model.addAttribute("cinememaps", mapService.getcinemeMapList());
@@ -47,11 +56,16 @@ public class MyController {
    
 
     @RequestMapping("/hospital")
-    public String hospital(Model model){
-        //model.addAttribute("hospitalmaps", mapService.gethospitalMapList());
+    public String hospital(){
+        //model.addAttribute("hospitalmaps", MapService.getLocationList());
         return "map/hospitalMap";
     }
 
+    @GetMapping("/hospitalList")
+    public List<Map> GetMapList() throws Exception{
+        return mapService.GetMapList();
+    }
+    
 
   
 

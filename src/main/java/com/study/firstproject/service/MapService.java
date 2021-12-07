@@ -15,9 +15,13 @@ public class MapService {
     @Autowired
     static MapMapper mapMapper;
 
-    public static List<Map> getLocationList() {
-        return mapMapper.getLocationList();
+    public List<Map> GetMapList() throws Exception{
+        return mapMapper.GetMapList();
     }
+
+
+
+
 
     
 

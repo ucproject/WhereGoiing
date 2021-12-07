@@ -8,11 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MapMapper {
    
-    public void create(Map map) throws Exception;
-    public List<Map> list() throws Exception;
-    public Map read(long mapNo) throws Exception;
-    public void update(Map map) throws Exception;
-    public void delete(long MapNo) throws Exception;
+    public List<Map> GetMapList() throws Exception;
     List<Map> getLocationList();
-
+    
 }

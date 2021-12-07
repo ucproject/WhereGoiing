@@ -9,6 +9,10 @@
   </head>
   <body >
     <h1>로그인 됨</h1>
+      
+    <c:forEach var = "dto" items="${hospitalmaps}">
+      ${dto.category}/ ${dto.name} / ${dto.address} / ${dto.latitude} / ${dto.longitude}
+    </c:forEach>
 
   </body>
 </html>
