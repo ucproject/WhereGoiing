@@ -9,22 +9,22 @@
     <form>
     <ul class="nav justify-content-center">     
             <li class="nav-item">
-                <a class="nav-link" href="restaurant">음식점</a>  
+                <a class="nav-link btnChangeCate" data-cate="음식점" href="restaurant">음식점</a>  
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="cineme">영화관</a>  
+                <a class="nav-link btnChangeCate" data-cate="영화관" href="cineme">영화관</a>  
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="hospital">병원</a>   
+                <a class="nav-link btnChangeCate" data-cate="병원" href="hospital">병원</a>   
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="mart">대형마트</a>   
+                <a class="nav-link btnChangeCate" data-cate="대형마트" href="mart">대형마트</a>   
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="market">시장</a>   
+                <a class="nav-link btnChangeCate" data-cate="시장" href="market">시장</a>   
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="park">도시 공원</a>   
+                <a class="nav-link btnChangeCate"  data-cate="공원" href="park">도시 공원</a>   
             </li>
             <li class="nav-justify-content-end">
                 <a class="nav-link" href="logout">로그아웃</a>     
@@ -50,6 +50,7 @@
 <script>
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 //var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+let current_cate = '병원';
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -83,8 +84,12 @@ if (navigator.geolocation) {
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 kakao.maps.event.addListener(map, 'bounds_changed', function() {             
-    
+    getMarkerOnMap(current_cate);
+});
+
+function getMarkerOnMap(cate){
     // 지도 영역정보를 얻어옵니다 
     var bounds = map.getBounds();
     
@@ -96,17 +101,22 @@ kakao.maps.event.addListener(map, 'bounds_changed', function() {
     
     var message = '<p>영역좌표는 남서쪽 위도, 경도는  ' + sw.toString() + '이고 <br>';  
     message += '북동쪽 위도, 경도는  ' + ne.toString() + '입니다 </p>'; 
+    getLocation(cate, sw, ne);
     
-    console.log(message);
-});
-for(var i=0; i<=100; i++){
-    
+    // console.log(message);
 }
+
 $(document).ready(function(){
-    $.get("/hospital",function(data){
-        console.log(data);
-        alert(JSON.stringify(data));
-    });
+    // $.get("/hospital",function(data){
+    //     console.log(data);
+    // });
+    getMarkerOnMap(current_cate);
+    $('.btnChangeCate').on('click', function(e){
+        e.preventDefault();
+        current_cate = $(this).data('cate');
+        console.log('clicked cate = '+current_cate);
+        getMarkerOnMap(current_cate);
+    })
 });
 
 // function parsing(){
@@ -161,57 +171,88 @@ $(document).ready(function(){
 //     })
 // }
 
-// let getLocation = (cate, sw, ne)=>{
-//     $.ajax({
-//         type : "POST",
-//         url : "/hospital",
-//         data:{
-//             cate: cate,
-//             sw: sw,
-//             ne: ne,
-//         },
-//         dataType: 'json',
-//         error : function(error){
-//             console.log("error");
-//         },
-//         success : function(data){
-//             console.log(data);
-//             alert(JSON.stringify(data));
-//             console.log("success");
+let getLocation = (cate, sw, ne)=>{
+    $.ajax({
+        type : "GET",
+        url : "/api/getLocationOnMap",
+        data:{
+            cate: cate,
+            sw_lat: sw.getLat(),
+            sw_lng : sw.getLng(),
+            ne_lat: ne.getLat(),
+            ne_lng: ne.getLng()
+        },
+        dataType: 'json',
+        error : function(error){
+            console.log("error");
+        },
+        success : function(rslt){
+            console.log(rslt);
+            // alert(JSON.stringify(data));
+            // console.log("success");
+            const data = rslt.data;
+            //markers.removeMarker(marker);
+            $.each(data, (i, d)=>{
+                // if(i < 10){
+                //     console.log(i + ', '+d.name+" "+d.address);
+                // }
 
-//             var positions = [];
-//             for(var i=0; i<positions.length; i++){
-//                 positions.push({
-//                     title : positions[i].name, //마커에 타이틀 표시
-//                     latlng : new kakao.maps.LatLng(positions[i].lat, positions[i].lon)
-//                 });
-//             }
-//                 // 마커 이미지의 이미지 크기 입니다
-//         var markers = [];
-//         for(var i=0; i<positions.length; i++){
-        
-        
-//             var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-//         var imageSize = new kakao.maps.Size(24, 35); 
-        
-//         // 마커 이미지를 생성합니다    
-//         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-//         // 마커를 생성합니다
-//         var marker = new kakao.maps.Marker({
-//             map: map, // 마커를 표시할 지도
-//             position: positions[i].latlng, // 마커를 표시할 위치
-//             title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-//             image : markerImage // 마커 이미지 
-//         });
-//                 marker.setMap(map);
+                var markers = [];
+
+                // 마커 하나를 지도위에 표시합니다 
+                addMarker(new kakao.maps.LatLng(d.longitude, d.latitude));
+
+                // 마커를 생성하고 지도위에 표시하는 함수입니다
+                  function addMarker(position) {
+    
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                 position: position
+                   });
+
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
+    
+                   // 생성된 마커를 배열에 추가합니다
+                  markers.push(marker);
+                  }
+
+                  });
+
+
+            // var positions = [];
+            // for(var i=0; i<positions.length; i++){
+            //     positions.push({
+            //         title : positions[i].name, //마커에 타이틀 표시
+            //         latlng : new kakao.maps.LatLng(positions[i].lat, positions[i].lon)
+            //     });
+            // }
+            //     // 마커 이미지의 이미지 크기 입니다
+            //     var markers = [];
+            //     for(var i=0; i<positions.length; i++){
+                
+                
+            //         var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+            //     var imageSize = new kakao.maps.Size(24, 35); 
+                
+            //     // 마커 이미지를 생성합니다    
+            //     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+            //     // 마커를 생성합니다
+            //     var marker = new kakao.maps.Marker({
+            //         map: map, // 마커를 표시할 지도
+            //         position: positions[i].latlng, // 마커를 표시할 위치
+            //         title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            //         image : markerImage // 마커 이미지 
+            //     });
+            //     marker.setMap(map);
                     
-//                     // LatLngBounds 객체에 좌표를 추가합니다
-//                 bounds.extend(positions[i]);
-//                 markers.push(marker);
-//         }
-//         },async : false
-//     });
-// };
+            //         // LatLngBounds 객체에 좌표를 추가합니다
+            //     bounds.extend(positions[i]);
+            //     markers.push(marker);
+            // }
+        },async : false
+    });
+};
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition, message) {
