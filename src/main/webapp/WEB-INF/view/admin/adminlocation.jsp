@@ -45,7 +45,6 @@
 							<label for="searchInput">Search</label>
 							<button class="w-60 btn btn-lg" type="submit">Search</button>
 							<button class="w-60 btn btn-lg" type="submit">Add</button> 
-							
 						</center>		
 					</div>
 				</div>

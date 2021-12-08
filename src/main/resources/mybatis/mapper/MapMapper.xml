@@ -25,8 +25,15 @@
         select * from UlsanInfo where category = "대형마트";
     </select>
 
-    <select id="getHospitalList" resultType="com.study.firstproject.model.Map">
-        select * from UlsanInfo where category = "병원";
+    <select id="getLocationListOnMap" resultType="com.study.firstproject.model.Map">
+    <![CDATA[
+        select * from UlsanInfo where 
+        category = #{cate} 
+        and longitude > #{sw_lat}
+        and latitude > #{sw_lng}
+        and longitude < #{ne_lat}
+        and latitude < #{ne_lng};
+    ]]>
     </select>
 
 
