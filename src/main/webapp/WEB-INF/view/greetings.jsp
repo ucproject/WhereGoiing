@@ -13,7 +13,7 @@
     <title>반갑습니다</title>
     <ul class="nav justify-content-center">
       <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="hospital">Active</a> <!--테스트용 버튼-->
+          <a class="nav-link active" aria-current="page" href="main">Active</a> <!--테스트용 버튼-->
       </li>
       <li class="nav-item">
           <a class="nav-link" href="userlogin">sign in</a>  <!--로그인버튼-->

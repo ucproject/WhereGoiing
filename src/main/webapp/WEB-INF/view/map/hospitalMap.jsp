@@ -164,9 +164,6 @@ let getLocation = (cate, sw, ne)=>{
                     marker.setMap(null);
                     infowindow.close();
                 })
-                    
-                
-
                 }
             });
         },async : false

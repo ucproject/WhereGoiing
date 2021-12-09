@@ -1,9 +1,6 @@
 package com.study.firstproject.Controller;
 
 
-import java.util.List;
-
-import com.study.firstproject.model.Map;
 import com.study.firstproject.model.Member;
 import com.study.firstproject.model.common.ResultMsg;
 import com.study.firstproject.service.MapService;
@@ -37,62 +34,18 @@ public class MyController {
     public String nicetoMeet(){
         return "greetings";
     }
-    @RequestMapping("/main")
-    public String main(){
-        //model.addAttribute("maps", mapService.gethospitalMapList());
-        return "main";
-    }
 
     @RequestMapping("/map")
     public String map(){
         //model.addAttribute("parkmaps", mapService.getparkMapList());
         return "map/map";
     }
-    @RequestMapping("/cineme")
-    public String cinemamain(){
-        //model.addAttribute("cinememaps", mapService.getcinemeMapList());
-        return "map/cinemeMap";
-    }
-   
 
-    @RequestMapping("/hospital")
-    public String hospital(){
-        //model.addAttribute("hospitalmaps", MapService.getLocationList());
+    @RequestMapping("/main")
+    public String Main(){
+        
         return "map/hospitalMap";
     }
-
-    @GetMapping("/hospitalList")
-    public List<Map> GetMapList() throws Exception{
-        return mapService.GetMapList();
-    }
-    
-
-  
-
-    @RequestMapping("/market")
-    public String market(){
-        //map.addAttribute("marketmaps", mapService.getmarketMapList());
-        return "map/marketMap";
-    }
-
-    @RequestMapping("/mart")
-    public String mart(){
-        //model.addAttribute("martmaps", mapService.getmartMapList());
-        return "map/martMap";
-    }
-
-    @RequestMapping("/park")
-    public String park(){
-        //model.addAttribute("parkmaps", mapService.getparkMapList());
-        return "map/parkMap";
-    }
-
-    @RequestMapping("/restaurant")
-    public String restaurant(){
-        //model.addAttribute("restaurantmaps", mapService.getrestaurantMapList());
-        return "map/restaurantMap";
-    }
-
 
     @RequestMapping("/join") //sign up
     public String join(){
